@@ -15,3 +15,22 @@ function createUser(email, password, name) {
         .hash(password, 10)
         .then((hash) => model.createUser(email, hash, name));
 }
+
+function verifyUser(email, password) {
+    return model.getUser(email).then((user) => {
+        return bcrypt.compare(password, user.password).then((match) => {
+            if (!match) {
+                throw new Error("Password mismatch!")
+            } else {
+                return user;
+            }
+        });
+    });
+}
+
+function saveUserSession(user) {
+    const randSid = crypto.randomBytes(18).toString("base64");
+    return model.createSession(randSid, { user });
+}
+
+module.exports = { verifyUser, saveUserSession };
