@@ -10,10 +10,10 @@ const COOKIE_OPTIONS = {
     signed: true,
 };
 
-function createUser(email, password, name) {
+function createUser(name, email, password) {
     return bcrypt
         .hash(password, 10)
-        .then((hash) => model.createUser(email, hash, name));
+        .then((hash) => model.createUser(name, email, hash));
 }
 
 function verifyUser(email, password) {
@@ -34,4 +34,3 @@ function saveUserSession(user) {
 }
 
 module.exports = { verifyUser, createUser, saveUserSession, COOKIE_OPTIONS }
-

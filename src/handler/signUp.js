@@ -20,17 +20,20 @@ function get(request, response) {
 }
 
 function post(request, response) {
-  const { name, email, password } = request.body
-  auth.createUser(name, email, password)
-  .then((user) => auth.saveUserSession(user))
-  .then((sid) => {
-    response.cookie("sid", sid, auth.COOKIE_OPTIONS)
-    response.redirect("/")
-  })
-  .then((error) => {
-    console.error(error);
-    response.send(`<h1>Sign in details incorrect. Go back to the homepage <a href="/">here</a></h1>`);
-  })
+  const { name, email, password } = request.body;
+  auth
+    .createUser(name, email, password)
+    .then((user) => auth.saveUserSession(user))
+    .then((sid) => {
+      response.cookie('sid', sid, auth.COOKIE_OPTIONS);
+      response.redirect('/');
+    })
+    .catch((error) => {
+      console.error(error);
+      response.send(
+        `<h1>Sign in details incorrect. Go back to the homepage <a href="/">here</a></h1>`
+      );
+    });
 }
 
 module.exports = { get, post };

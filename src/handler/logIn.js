@@ -1,4 +1,4 @@
-const auth = require("../auth.js");
+const auth = require("../../auth");
 const templates = require('../components/html');
 
 function get(request, response) {

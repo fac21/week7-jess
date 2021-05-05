@@ -3,32 +3,42 @@ const server = express();
 
 const staticHandler = express.static('public');
 
-const addCatPage = require("./src/routes/addCat");
-const catNamePage = require("./src/routes/catName");
-const homePage = require("./src/routes/home");
-const logInPage = require("./src/routes/home./src/routes/login");
-const logOutPage = require("./src/routes/home./src/routes/logOut");
+const addCatPage = require("./src/handler/addCat");
+const catNamePage = require("./src/handler/catName");
+const homePage = require("./src/handler/home");
+const logInPage = require("./src/handler/logIn");
+const logOutPage = require("./src/handler/logOut");
 
-const signUpPage = require("./src/routes/signUp");
+const signUpPage = require("./src/handler/signUp");
 
 // middleware - gets cookie header, parses into obj + attaches to request
 const cookieParser = require("cookie-parser");
 
 const bodyParser = express.urlencoded({ extended: false });
 
-server.use((req, res) => {
-    res.status(404).send("<h1>Not found</h1>");
-});
+function logger(req, res, next) {
+    const time = new Date().toLocaleTimeString();
+    console.log(`${time} ${req.method} ${req.url}`);
+    next();
+}
+
+// server.use((req, res) => {
+// res.status(404).send('<h1>Not found</h1>');
+// });
 
 server.use(cookieParser(process.env.COOKIE_SECRET));
 server.use(staticHandler);
+server.use(logger);
 
 // routes
+server.get('/', homePage.get);
+
 server.get('/sign-up', signUpPage.get);
 server.post('/sign-up', bodyParser, signUpPage.post);
+
 server.get('/log-in', logInPage.get);
-server.post('/log-in', logInPage.post);
-server.post('/log-out', logOutPage.post);
+server.post('/log-in', bodyParser, logInPage.post);
+server.post('/log-out', bodyParser, logOutPage.post);
 
 const PORT = process.env.PORT || 3000;
 
