@@ -1,10 +1,10 @@
 const express = require("express");
 const server = express();
-
-const addCatPage = require("./src/routes/addCat");
-const catNamePage = require("./src/routes/catName");
-const homePage = require("./src/routes/home");
-const logInPage = require("./src/routes/home./src/routes/logIn");
+const staticHandler = express.static('public');
+// const addCatPage = require("./src/routes/addCat");
+// const catNamePage = require("./src/routes/catName");
+// const homePage = require("./src/routes/home");
+// const logInPage = require("./src/routes/home./src/routes/logIn");
 const signUpPage = require("./src/routes/signUp");
 
 // middleware - gets cookie header, parses into obj + attaches to request
@@ -12,9 +12,13 @@ const cookieParser = require("cookie-parser");
 
 const bodyParser = express.urlencoded({ extended: false });
 
+// routes
+server.get('/sign-up', signUpPage.getSignUpPage);
+server.post('/sign-up', bodyParser, signUpPage.postSignUpPage);
+
+
 server.use(cookieParser(process.env.COOKIE_SECRET));
 server.use(staticHandler);
-const staticHandler = express.static("public");
 
 server.use((req, res) => {
     res.status(404).send("<h1>Not found</h1>");
