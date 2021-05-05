@@ -33,4 +33,5 @@ function saveUserSession(user) {
     return model.createSession(randSid, { user });
 }
 
-module.exports = { verifyUser, saveUserSession };
+module.exports = { verifyUser, createUser, saveUserSession, COOKIE_OPTIONS }
+
