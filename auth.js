@@ -16,9 +16,22 @@ function createUser(email, password, name) {
         .then((hash) => model.createUser(email, hash, name));
 }
 
+function verifyUser(email, password) {
+    return model.getUser(email).then((user) => {
+        return bcrypt.compare(password, user.password).then((match) => {
+            if (!match) {
+                throw new Error("Password mismatch!")
+            } else {
+                return user;
+            }
+        });
+    });
+}
+
 function saveUserSession(user) {
     const randSid = crypto.randomBytes(18).toString("base64");
     return model.createSession(randSid, { user });
 }
 
-module.exports = { createUser, saveUserSession, COOKIE_OPTIONS }
+module.exports = { verifyUser, createUser, saveUserSession, COOKIE_OPTIONS }
+
