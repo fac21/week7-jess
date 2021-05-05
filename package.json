@@ -1,29 +1,35 @@
 {
-  "name": "week7-jess",
-  "version": "1.0.0",
-  "description": "week 7- server-side-app",
-  "main": "server.js",
-  "scripts": {
-    "test": "cypress open",
-    "start": "node server.js",
-    "dev": "nodemon server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/fac21/week7-jess.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/fac21/week7-jess/issues"
-  },
-  "homepage": "https://github.com/fac21/week7-jess#readme",
-  "dependencies": {
-    "express": "^4.17.1",
-    "nodemon": "^2.0.7"
-  },
-  "devDependencies": {
-    "cypress": "^7.2.0"
-  }
+    "name": "week7-jess",
+    "version": "1.0.0",
+    "description": "week 7- server-side-app",
+    "main": "server.js",
+    "scripts": {
+        "test": "cypress open",
+        "start": "node server.js",
+        "dev": "nodemon server.js",
+        "db:setup": "./scripts/db:setup",
+        "db:build": "./scripts/db:build"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/fac21/week7-jess.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/fac21/week7-jess/issues"
+    },
+    "homepage": "https://github.com/fac21/week7-jess#readme",
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "cookie-parser": "^1.4.5",
+        "dotenv": "^8.5.1",
+        "express": "^4.17.1",
+        "nodemon": "^2.0.7",
+        "pg": "^8.6.0"
+    },
+    "devDependencies": {
+        "cypress": "^7.2.0"
+    }
 }

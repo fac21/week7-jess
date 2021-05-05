@@ -17,7 +17,7 @@ CREATE TABLE sessions (
 );
 
 CREATE TABLE cats(
-    id serial primay key,
+    id serial primary key,
     picture bytea not null,
     description text not null,
     user_id integer references users(id) ON DELETE CASCADE,
