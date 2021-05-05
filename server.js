@@ -13,8 +13,8 @@ const cookieParser = require("cookie-parser");
 const bodyParser = express.urlencoded({ extended: false });
 
 // routes
-server.get('/sign-up', signUpPage.getSignUpPage);
-server.post('/sign-up', bodyParser, signUpPage.postSignUpPage);
+server.get('/sign-up', signUpPage.get);
+server.post('/sign-up', bodyParser, signUpPage.post);
 
 
 server.use(cookieParser(process.env.COOKIE_SECRET));

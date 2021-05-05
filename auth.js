@@ -15,3 +15,10 @@ function createUser(email, password, name) {
         .hash(password, 10)
         .then((hash) => model.createUser(email, hash, name));
 }
+
+function saveUserSession(user) {
+    const randSid = crypto.randomBytes(18).toString("base64");
+    return model.createSession(randSid, { user });
+}
+
+module.exports = { createUser, saveUserSession, COOKIE_OPTIONS }

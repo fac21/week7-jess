@@ -1,7 +1,7 @@
 const auth = require('../../auth');
 const html = require('../components/html');
 
-function getSignUpPage(request, response) {
+function get(request, response) {
   let mainContent = `
   <h1>Sign up</h1>
   <form action='/sign-up' method='POST'>
@@ -19,6 +19,18 @@ function getSignUpPage(request, response) {
   response.send(html.getReusableHTML(mainContent));
 }
 
-function postSignUpPage(request, response) {}
+function post(request, response) {
+  const { name, email, password } = request.body
+  auth.createUser(name, email, password)
+  .then((user) => auth.saveUserSession(user))
+  .then((sid) => {
+    response.cookie("sid", sid, auth.COOKIE_OPTIONS)
+    response.redirect("/")
+  })
+  .then((error) => {
+    console.error(error);
+    response.send(`<h1>Sign in details incorrect. Go back to the homepage <a href="/">here</a></h1>`);
+  })
+}
 
-module.exports = { getSignUpPage, postSignUpPage };
+module.exports = { get, post };
