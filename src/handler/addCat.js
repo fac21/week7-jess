@@ -1,6 +1,7 @@
 const html = require('../components/html');
 const model = require('../../database/model');
 
+
 function get(request, response) {
   const addCatHtml = `
     <h1>Add your cat's details below</h1>
@@ -15,6 +16,9 @@ function get(request, response) {
     `;
   response.send(html.getReusableHTML(addCatHtml));
 }
+
+const MAX_SIZE = 1000 * 1000 * 5; // 5 megabytes
+const ALLOWED_TYPES = ["image/jpeg", "image/png"]; // probs want to support more formats than this
 
 function post(request, response) {
   const { picture, description } = request.body;

@@ -8,19 +8,15 @@ const catNamePage = require("./src/handler/catName");
 const homePage = require("./src/handler/home");
 const logInPage = require("./src/handler/logIn");
 const logOutPage = require("./src/handler/logOut");
-
 const signUpPage = require("./src/handler/signUp");
+const checkAuth = require("./src/middleware/checkAuth")
 
 // middleware - gets cookie header, parses into obj + attaches to request
 const cookieParser = require("cookie-parser");
-
 const bodyParser = express.urlencoded({ extended: false });
-
-function logger(req, res, next) {
-    const time = new Date().toLocaleTimeString();
-    console.log(`${time} ${req.method} ${req.url}`);
-    next();
-}
+const multer = require("multer");
+const upload = multer();
+const logger = require("./src/middleware/logger");
 
 // server.use((req, res) => {
 // res.status(404).send('<h1>Not found</h1>');
@@ -28,7 +24,7 @@ function logger(req, res, next) {
 
 server.use(cookieParser(process.env.COOKIE_SECRET));
 server.use(staticHandler);
-server.use(logger);
+server.use(logger.logger);
 
 // routes
 server.get("/", homePage.get);
@@ -38,10 +34,11 @@ server.post("/sign-up", bodyParser, signUpPage.post);
 
 server.get("/log-in", logInPage.get);
 server.post("/log-in", bodyParser, logInPage.post);
+
 server.post("/log-out", bodyParser, logOutPage.post);
 
-server.get("/add-cat", addCatPage.get);
-server.post("/add-cat", bodyParser, addCatPage.post);
+server.get("/add-cat", checkAuth.checkAuth ,addCatPage.get);
+server.post("/add-cat", upload.single("cat_photo"), addCatPage.post);
 
 const PORT = process.env.PORT || 3000;
 

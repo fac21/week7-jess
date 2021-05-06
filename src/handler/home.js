@@ -5,7 +5,10 @@ const catPicsHtml = `
 <div class="cat-pics">
     <img src="#" alt="Generic cat pic">
 </div>
+
+<a href="/add-cat">Add a cat to be named</a>
 `
+
 ;
 
 
