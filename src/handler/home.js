@@ -5,12 +5,7 @@ const catPicsHtml = `
 <div class="cat-pics">
     <img src="#" alt="Generic cat pic">
 </div>
-
-<a href="/add-cat">Add a cat to be named</a>
-`
-
-;
-
+`;
 
 function get(request, response) {
     const sid = request.signedCookies.sid;
