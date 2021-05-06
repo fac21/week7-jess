@@ -1,7 +1,7 @@
 const express = require("express");
 const server = express();
 
-const staticHandler = express.static('public');
+const staticHandler = express.static("public");
 
 const addCatPage = require("./src/handler/addCat");
 const catNamePage = require("./src/handler/catName");
@@ -31,14 +31,17 @@ server.use(staticHandler);
 server.use(logger);
 
 // routes
-server.get('/', homePage.get);
+server.get("/", homePage.get);
 
-server.get('/sign-up', signUpPage.get);
-server.post('/sign-up', bodyParser, signUpPage.post);
+server.get("/sign-up", signUpPage.get);
+server.post("/sign-up", bodyParser, signUpPage.post);
 
-server.get('/log-in', logInPage.get);
-server.post('/log-in', bodyParser, logInPage.post);
-server.post('/log-out', bodyParser, logOutPage.post);
+server.get("/log-in", logInPage.get);
+server.post("/log-in", bodyParser, logInPage.post);
+server.post("/log-out", bodyParser, logOutPage.post);
+
+server.get("/add-cat", addCatPage.get);
+server.post("/add-cat", bodyParser, addCatPage.post);
 
 const PORT = process.env.PORT || 3000;
 
