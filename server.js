@@ -9,7 +9,7 @@ const homePage = require("./src/handler/home");
 const logInPage = require("./src/handler/logIn");
 const logOutPage = require("./src/handler/logOut");
 const signUpPage = require("./src/handler/signUp");
-const checkAuth = require("./src/middleware/checkAuth")
+const checkAuth = require("./src/middleware/checkAuth");
 
 // middleware - gets cookie header, parses into obj + attaches to request
 const cookieParser = require("cookie-parser");
@@ -37,7 +37,7 @@ server.post("/log-in", bodyParser, logInPage.post);
 
 server.post("/log-out", bodyParser, logOutPage.post);
 
-server.get("/add-cat", checkAuth.checkAuth ,addCatPage.get);
+server.get("/add-cat", checkAuth.checkAuth, addCatPage.get);
 server.post("/add-cat", upload.single("cat_photo"), addCatPage.post);
 
 const PORT = process.env.PORT || 3000;
