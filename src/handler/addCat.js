@@ -1,6 +1,8 @@
 const html = require('../components/html');
 const model = require('../../database/model');
 
+const MAX_SIZE = 1000 * 1000 * 5; // 5 megabytes
+const ALLOWED_TYPES = ["image/jpeg", "image/png"]; 
 
 function get(request, response) {
   const addCatHtml = `
@@ -17,12 +19,22 @@ function get(request, response) {
   response.send(html.getReusableHTML(addCatHtml));
 }
 
-const MAX_SIZE = 1000 * 1000 * 5; // 5 megabytes
-const ALLOWED_TYPES = ["image/jpeg", "image/png"]; // probs want to support more formats than this
+
 
 function post(request, response) {
-  const { picture, description } = request.body;
 
+  const file = request.file;
+  if (!ALLOWED_TYPES.includes(file.mimetype)) {
+    response.status(400).send("<h1>File upload error</h1><p>Please upload an image file</p>");
+  }
+  if (file.size > MAX_SIZE) {
+    response.status(400).send("<h1>File upload error</h1><p>Picture must be < 5MB</p>");
+  } else {
+
+  const { description } = request.body;
+
+  console.log(request.body);
+  
   // see user log in - create cat
   // @TODO- add middleware.checkAuth --> LATER
   const sid = request.signedCookies.sid;
@@ -30,7 +42,7 @@ function post(request, response) {
     .getSession(sid)
     .then((session) => model.getUser(session.user.email))
     .then((user) => {
-      model.createCat(picture, description, user.id);
+      model.createCat(file.buffer, description, user.id);
     })
     .then(() => {
       response.redirect('/');
@@ -41,6 +53,7 @@ function post(request, response) {
         `<h1>Unable to create cat post! :(</h1><a href="/">Back to Homepage</a>`
       );
     });
+}
 }
 
 module.exports = { get, post };
