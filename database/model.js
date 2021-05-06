@@ -44,6 +44,22 @@ function getCat(id) {
     });
 }
 
+function createCatName(name) {
+const INSERT_NAME = `INSERT INTO cat_names (name, created_at) VALUES ($1, (SELECT CURRENT_TIMESTAMP))
+  RETURNING name, created_at`;
+  console.log(name)
+  return db.query(INSERT_NAME, [name]);
+}
+
+function getCatNameData(id) {
+  const SELECT_CAT_NAME = `
+  SELECT * FROM cat_name WHERE id=$1;
+  `;
+  return db.query(SELECT_CAT_NAME, [id]).then((result) => {
+    return result.rows[0];
+  });
+}
+
 function createCat(picture, description, user_id) {
     const INSERT_CAT = `
   INSERT INTO cats (picture, description, user_id, created_at) VALUES ($1, $2, $3, (SELECT CURRENT_TIMESTAMP))`;
@@ -63,12 +79,14 @@ function deleteSession(sid) {
 }
 
 module.exports = {
-    getCat,
-    getCatData,
-    getUser,
-    getSession,
-    deleteSession,
-    createUser,
-    createSession,
-    createCat
+  getCat,
+  getCatData,
+  createCatName,
+getCatNameData,
+  getUser,
+  getSession,
+  deleteSession,
+  createUser,
+  createSession,
+  createCat,
 };

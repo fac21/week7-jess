@@ -44,7 +44,7 @@ server.post("/add-cat", upload.single("cat_photo"), addCatPage.post);
 server.get("/cat-pic/:catid", catPic.get);
 
 server.get("/cats/:catid", catPage.get);
-
+server.post('/cats/:catid', bodyParser, catPage.post);
 
 
 const PORT = process.env.PORT || 3000;
