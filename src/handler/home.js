@@ -5,6 +5,8 @@ const catPicsHtml = `
 <div class="cat-pics">
     <img src="#" alt="Generic cat pic">
 </div>
+<a href='/add-cat'>Add a cat</a>
+<p> Get your cat named by the cat-loving community!</p>
 `;
 
 function get(request, response) {
@@ -18,7 +20,6 @@ function get(request, response) {
         <form action="/log-out" method="POST">
             <button>Log out</button>
         </form>
-        <a href='/add-cat'>Add cat</a>
         `
         + catPicsHtml;
         // link to add cats above?
