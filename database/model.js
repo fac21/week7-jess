@@ -47,5 +47,11 @@ function createCat(picture, description,user_id){
    return db.query(DELETE_SESSION, [sid]);
  }
 
+ function getCatData(){
+  const GET_CAT_IMG = `SELECT * FROM cats;`
+  return db.query(GET_CAT_IMG)
+  .then((result) => {
+    return result.rows[0]})
+ }
 
-module.exports = { getUser, getSession, deleteSession, createUser, createSession, createCat, getSession };
+module.exports = { getUser, deleteSession, createUser, createSession, getSession, createCat, getCatData };
