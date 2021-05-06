@@ -41,10 +41,11 @@ server.post("/log-out", bodyParser, logOutPage.post);
 server.get("/add-cat", checkAuth.checkAuth, addCatPage.get);
 server.post("/add-cat", upload.single("cat_photo"), addCatPage.post);
 
-server.get("/:cat-id", catPage.get);
-server.post("/cat", bodyParser, catPage.post);
+server.get("/cat-pic/:catid", catPic.get);
 
-server.get("/cat-pic/:cat-id", catPic.get);
+server.get("/cats/:catid", catPage.get);
+
+
 
 const PORT = process.env.PORT || 3000;
 

@@ -1,10 +1,13 @@
 const model = require("../../database/model");
 
 function get(request, response) {
-    const catId = request.params.id;
+    const catId = request.params.catid;
+    console.log("catId", catId);
     const cat = model.getCat(catId).then((cat) => {
         response.send(cat.picture);
-    });
+    }).catch((error) => {
+        console.error(error);
+    })
 }
 
 module.exports = {get };
