@@ -1,6 +1,6 @@
 # week7-jess - server-side app
 
-- Jo: Facilitator
+- Joe: Facilitator
 - Evgeny: User
 - Safia: Deployment
 - Saki: Quality
@@ -33,5 +33,13 @@ Website name: "Name My Kitty"
 
 ![](https://i.imgur.com/wj1mFeL.png)
 ![](https://i.imgur.com/h844XX6.png)
+
+##  Final - home page
+![](Screenshot 2021-05-06 at 17 45 15](https://user-images.githubusercontent.com/69358550/117335312-ed9ed600-ae92-11eb-81c6-c084c9e65594.png)
+
+##  Final - sign up page
+![](Screenshot 2021-05-06 at 17 44 16](https://user-images.githubusercontent.com/69358550/117335181-c516dc00-ae92-11eb-832d-180004b43473.png)
+
+
 
 
