@@ -1,5 +1,5 @@
 function getReusableHTML(mainContent) {
-  return  `
+    return `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +7,7 @@ function getReusableHTML(mainContent) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta description="Name my cat website">
+    <link rel="stylesheet" href="style.css">
     <title>Name my Kitty</title>
 </head>
 <body>
@@ -15,8 +16,7 @@ function getReusableHTML(mainContent) {
     </main>
 </body>
 </html>
-`
+`;
 }
 
-
-module.exports = {getReusableHTML}
+module.exports = { getReusableHTML };
