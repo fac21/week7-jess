@@ -20,7 +20,8 @@ function get(request, response) {
         <form action="/log-out" method="POST">
             <button>Log out</button>
         </form>
-        ` 
+        <a href='/add-cat'>Add cat</a>
+        `
         + catPicsHtml;
         // link to add cats above?
         response.send(html.getReusableHTML(homePageHtml)); // repetition of below, refactor later
@@ -35,7 +36,7 @@ function get(request, response) {
         <a href="/sign-up">Sign up</a>
         <span> | </span>
         <a href="/log-in">Log in</a>
-        ` 
+        `
         + catPicsHtml;
         response.send(html.getReusableHTML(homePageHtml));
     }

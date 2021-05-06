@@ -33,7 +33,14 @@ function getUser(email) {
   return db.query(selectUser, [email]).then((result) => {
       return result.rows[0];
     });
-  }
+}
+
+function createCat(picture, description,user_id){
+  const INSERT_CAT = `
+  INSERT INTO cats (picture, description, user_id, created_at) VALUES ($1, $2, $3, (SELECT CURRENT_TIMESTAMP))`;
+  return db.query(INSERT_CAT, [picture, description, user_id]);
+
+}
 
  function deleteSession(sid) {
    const DELETE_SESSION = "DELETE FROM sessions WHERE sid=$1";
@@ -41,4 +48,4 @@ function getUser(email) {
  }
 
 
-module.exports = { getUser, deleteSession, createUser, createSession, getSession };
+module.exports = { getUser, getSession, deleteSession, createUser, createSession, createCat, getSession };
