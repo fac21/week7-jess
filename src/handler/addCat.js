@@ -1,11 +1,11 @@
-const html = require('../components/html');
-const model = require('../../database/model');
+const html = require("../components/html");
+const model = require("../../database/model");
 
 const MAX_SIZE = 1000 * 1000 * 5; // 5 megabytes
-const ALLOWED_TYPES = ["image/jpeg", "image/png"]; 
+const ALLOWED_TYPES = ["image/jpeg", "image/png"];
 
 function get(request, response) {
-  const addCatHtml = `
+    const addCatHtml = `
     <h1>Add your cat's details below</h1>
      <form action="/add-cat" method="POST" enctype="multipart/form-data">
         <label for="cat_photo">My cat</label>
@@ -16,44 +16,44 @@ function get(request, response) {
      </form>
     <a href="/">Back to home page</a>
     `;
-  response.send(html.getReusableHTML(addCatHtml));
+    response.send(html.getReusableHTML(addCatHtml));
 }
-
-
 
 function post(request, response) {
+    const file = request.file;
+    if (!ALLOWED_TYPES.includes(file.mimetype)) {
+        response
+            .status(400)
+            .send("<h1>File upload error</h1><p>Please upload an image file</p>");
+    }
+    if (file.size > MAX_SIZE) {
+        response
+            .status(400)
+            .send("<h1>File upload error</h1><p>Picture must be < 5MB</p>");
+    } else {
+        const { description } = request.body;
 
-  const file = request.file;
-  if (!ALLOWED_TYPES.includes(file.mimetype)) {
-    response.status(400).send("<h1>File upload error</h1><p>Please upload an image file</p>");
-  }
-  if (file.size > MAX_SIZE) {
-    response.status(400).send("<h1>File upload error</h1><p>Picture must be < 5MB</p>");
-  } else {
+        console.log(request.body);
 
-  const { description } = request.body;
-
-  console.log(request.body);
-  
-  // see user log in - create cat
-  // @TODO- add middleware.checkAuth --> LATER
-  const sid = request.signedCookies.sid;
-  model
-    .getSession(sid)
-    .then((session) => model.getUser(session.user.email))
-    .then((user) => {
-      model.createCat(file.buffer, description, user.id);
-    })
-    .then(() => {
-      response.redirect('/');
-    })
-    .catch((error) => {
-      console.error('error', error);
-      response.send(
-        `<h1>Unable to create cat post! :(</h1><a href="/">Back to Homepage</a>`
-      );
-    });
+        // see user log in - create cat
+        // @TODO- add middleware.checkAuth --> LATER
+        const sid = request.signedCookies.sid;
+        model
+            .getSession(sid)
+            .then((session) => model.getUser(session.user.email))
+            .then((user) => {
+                model.createCat(file.buffer, description, user.id);
+            })
+            .then(() => {
+                response.redirect("/");
+            })
+            .catch((error) => {
+                console.error("error", error);
+                response.send(
+                    `<h1>Unable to create cat post! :(</h1><a href="/">Back to Homepage</a>`
+                );
+            });
+    }
 }
-}
 
-module.exports = { get, post };
+module.exports = {get, post };
