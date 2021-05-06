@@ -1,6 +1,10 @@
 body {
-    background-color: #eba0f5;
     text-align: center;
+    max-width: 80vw;
+}
+
+.logo{
+    text-align: left;
 }
 
 form {

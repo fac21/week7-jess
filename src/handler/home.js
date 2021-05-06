@@ -14,9 +14,6 @@ function get(request, response) {
         .then((values) => {
             const userName = values[0].user.name;
             const getCatsData = values[1];
-            console.log("userName", userName)
-            console.log("getCatsData", getCatsData)
-
             homePageHtml = `
             <h1>Hello ${userName}</h1>
             <form action="/log-out" method="POST">

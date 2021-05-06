@@ -11,6 +11,9 @@ function getReusableHTML(mainContent) {
     <title>Name my Kitty</title>
 </head>
 <body>
+    <header class='logo'>
+        <img src='images/logoweek7.png' alt="name-my-kitty-logo"/>
+    </header>
     <main>
         ${mainContent}
     </main>
