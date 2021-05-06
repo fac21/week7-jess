@@ -9,7 +9,7 @@ function get(request, response) {
 
         const catHtml = `
         <h1>Name This Cat!</h1>
-        <img class="catPic" src='/cat-pic/${catId}' alt="catPicture" width="auto" height="300">
+        <img class="image--catPage catPic" src='/cat-pic/${catId}' alt="catPicture">
         <div class="cat-description">${cat.description}</div>
         <br>
         <form action="/cats/:catid" method="POST">
@@ -20,7 +20,9 @@ function get(request, response) {
         <a href="/">Back to Homepage</a>
 
         `;
-        response.send(catHtml);
+
+        const htmlToSend = html.getReusableHTML(catHtml);       
+        response.send(htmlToSend);
 
     }).catch((error) => {
         console.error(error);
