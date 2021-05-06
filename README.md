@@ -9,9 +9,9 @@
 
 - File uploads - Allow users to upload files to your server (like images or audio clips).
 
-## Database
+## Database Schema
 
-![image](https://user-images.githubusercontent.com/59439482/117329001-1b345100-ae8c-11eb-8c2c-3ba2767c4e62.png)
+![image](https://user-images.githubusercontent.com/59439482/117329163-45860e80-ae8c-11eb-9264-60d7bb90ac11.png)
 
 ## Concept
 
