@@ -50,6 +50,13 @@ function createCat(picture, description, user_id) {
     return db.query(INSERT_CAT, [picture, description, user_id]);
 }
 
+ function getCatData(){
+  const GET_CAT_IMG = `SELECT * FROM cats;`
+  return db.query(GET_CAT_IMG)
+  .then((result) => {
+    return result.rows[0]})
+ }
+
 function deleteSession(sid) {
     const DELETE_SESSION = "DELETE FROM sessions WHERE sid=$1";
     return db.query(DELETE_SESSION, [sid]);
@@ -57,11 +64,11 @@ function deleteSession(sid) {
 
 module.exports = {
     getCat,
+    getCatData,
     getUser,
     getSession,
     deleteSession,
     createUser,
     createSession,
-    createCat,
-    getSession,
+    createCat
 };
