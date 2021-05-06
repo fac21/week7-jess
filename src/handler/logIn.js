@@ -1,5 +1,5 @@
 const auth = require("../../auth");
-const templates = require('../components/html');
+const templates = require("../components/html");
 
 function get(request, response) {
     const loginForm = `
@@ -31,4 +31,4 @@ function post(request, response) {
         });
 }
 
-module.exports = { get, post };
+module.exports = {get, post };
