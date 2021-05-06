@@ -9,6 +9,10 @@
 
 - File uploads - Allow users to upload files to your server (like images or audio clips).
 
+## Database
+
+![image](https://user-images.githubusercontent.com/59439482/117329001-1b345100-ae8c-11eb-8c2c-3ba2767c4e62.png)
+
 ## Concept
 
 Website name: "Name My Kitty"
