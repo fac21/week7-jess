@@ -19,6 +19,14 @@ function createSession(sid, data){
   .then((result) => result.rows[0].sid)
 }
 
+function getSession(sid) {
+  const SELECT_SESSION = "SELECT data FROM sessions WHERE sid=$1";
+  return db.query(SELECT_SESSION, [sid]).then((result) => {
+    const singleResult = result.rows[0];
+    return singleResult && singleResult.data;
+  });
+}
+
 function getUser(email) {
   const selectUser = `
     SELECT * FROM users WHERE email=$1;`;
@@ -33,4 +41,4 @@ function getUser(email) {
  }
 
 
-module.exports = { getUser, deleteSession, createUser, createSession };
+module.exports = { getUser, deleteSession, createUser, createSession, getSession };
