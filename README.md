@@ -9,7 +9,7 @@
 
 - File uploads - Allow users to upload files to your server (like images or audio clips).
 
-### Concept
+## Concept
 
 Website name: "Name My Kitty"
 - logged in users can upload pics
@@ -18,7 +18,7 @@ Website name: "Name My Kitty"
 - [stretch] up-vote names
 - [stretch] cat-pic poster chooses name
 
-### Technical criteria 
+## Technical criteria 
 - Express server
 - Postgres database
 - Hosted on Heroku
