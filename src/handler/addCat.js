@@ -7,8 +7,8 @@ const ALLOWED_TYPES = ["image/jpeg", "image/png"];
 function get(request, response) {
     const addCatHtml = `
     <h1>Add your cat's details below</h1>
-     <form action="/add-cat" method="POST" enctype="multipart/form-data">
-        <label for="cat_photo">My cat</label>
+     <form class="stack-sm" action="/add-cat" method="POST" enctype="multipart/form-data">
+        <label for="cat_photo">Add a cat photo:</label>
         <input type="file" id="cat_photo" name="cat_photo" required>
         <label for="description">Add a brief description about your cat</label>
         <textarea rows="4" cols="50" id="description" name="description" auto-focus required placeholder="E.g. breed, age, temperament"></textarea>
