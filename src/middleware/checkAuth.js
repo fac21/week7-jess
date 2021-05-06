@@ -1,5 +1,6 @@
 function checkAuth(req, res, next) {
   const user = req.session;
+  console.log("checkauth", user);
   if (!user) {
     res.status(401).send(`
       <h1>Please log in to view this page</h1>

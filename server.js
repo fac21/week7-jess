@@ -22,10 +22,6 @@ const logger = require("./src/middleware/logger");
 // res.status(404).send('<h1>Not found</h1>');
 // });
 
-
-
-
-
 server.use(cookieParser(process.env.COOKIE_SECRET));
 server.use(staticHandler);
 server.use(logger.logger);
