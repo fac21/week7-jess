@@ -11,7 +11,9 @@
 
 ## Database Schema
 
-![image](https://user-images.githubusercontent.com/59439482/117329163-45860e80-ae8c-11eb-9264-60d7bb90ac11.png)
+
+<img src="https://user-images.githubusercontent.com/59439482/117329163-45860e80-ae8c-11eb-9264-60d7bb90ac11.png" alt="database-schema" style="width:600px;"/>
+
 
 ## Concept
 
