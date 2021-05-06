@@ -23,7 +23,9 @@ function get(request, response) {
             <ul>
             ${getCatsData.map(cat_img => 
             ` <li>
-                <a href="/cats/${cat_img.id}"><img src="/cat-pic/${cat_img.id}" alt="" width="64" height="64"></a>
+                <a href="/cats/${cat_img.id}">
+                    <img src="/cat-pic/${cat_img.id}" alt="" class="image--homepage catPic">
+                </a>
               </li>
             `).join("")}
             </ul> 
@@ -44,6 +46,9 @@ function get(request, response) {
         <a href="/sign-up">Sign up</a>
         <span> | </span>
         <a href="/log-in">Log in</a>
+
+        <p> Get your cat named by the cat-loving community!</p>
+        <a href="/add-cat">Add a cat to be named</a>
         ` 
         response.send(html.getReusableHTML(homePageHtml));
     }

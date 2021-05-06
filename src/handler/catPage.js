@@ -9,10 +9,11 @@ function get(request, response) {
     
         const catHtml = `
         <h1>Name This Cat!</h1>
-        <img class="catPic" src='/cat-pic/${catId}' alt="catPicture"npm>
+        <img class="image--catPage catPic" src='/cat-pic/${catId}' alt="catPicture"npm>
         <div class="cat-description">${cat.description}</div>
         `;
-        response.send(catHtml);
+        const htmlToSend = html.getReusableHTML(catHtml);       
+        response.send(htmlToSend);
 
     }).catch((error) => {
         console.error(error);
