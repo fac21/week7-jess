@@ -54,7 +54,7 @@ function createCat(picture, description, user_id) {
   const GET_CAT_IMG = `SELECT * FROM cats;`
   return db.query(GET_CAT_IMG)
   .then((result) => {
-    return result.rows[0]})
+    return result.rows})
  }
 
 function deleteSession(sid) {

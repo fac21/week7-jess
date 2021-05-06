@@ -3,13 +3,21 @@ const model = require("../../database/model");
 const catPic = require("./catPic");
 
 function get(request, response) {
-    const catId = request.params.id;
-    const catHtml = `
-    <img class="catPick" src='/cat-pic/{$catId}' alt="catPicture">
-    `;
-    response.send(html.getReusableHTML(catHtml));
+    const catId = request.params.catid;
+
+    const cat = model.getCat(catId).then((cat) => {
+    
+        const catHtml = `
+        <h1>Name This Cat!</h1>
+        <img class="catPic" src='/cat-pic/${catId}' alt="catPicture" width="auto" height="500">
+        <div class="cat-description">${cat.description}</div>
+        `;
+        response.send(html.getReusableHTML(catHtml));
+
+    }).catch((error) => {
+        console.error(error);
+    })
 }
 
-function post(request, response) {}
 
-module.exports = {get, post };
+module.exports = {get};
