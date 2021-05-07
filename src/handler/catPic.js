@@ -6,6 +6,7 @@ function get(request, response) {
         response.send(cat.picture);
     }).catch((error) => {
         console.error(error);
+        response.send(`<h1>Something has gone wrong</h1><a href='/'>Back to Homepage</a>`);
     })
 }
 

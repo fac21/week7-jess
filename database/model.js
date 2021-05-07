@@ -44,10 +44,11 @@ function getCat(id) {
   });
 }
 
-function createCatName(name) {
-  const INSERT_NAME = `INSERT INTO cat_names (name, created_at) VALUES ($1, (SELECT CURRENT_TIMESTAMP))
-    RETURNING name, created_at`;
-    return db.query(INSERT_NAME, [name]);
+
+function createCatName(name, cat_id) {
+  const INSERT_NAME = `INSERT INTO cat_names (name, cat_id, created_at) VALUES ($1, $2,(SELECT CURRENT_TIMESTAMP))
+  RETURNING name, created_at`;
+    return db.query(INSERT_NAME, [name, cat_id]);
 }
 
 function getCatNameData(id) {

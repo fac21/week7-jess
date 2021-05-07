@@ -1,13 +1,14 @@
-const html = require("../components/html");
-const model = require("../../database/model");
-
+const html = require('../components/html');
+const model = require('../../database/model');
 
 function get(request, response) {
-    const catId = request.params.catid;
 
-    model.getCat(catId).then((cat) => {
+    const catId = request.params.catid
 
-        const catHtml = `
+model
+    .getCat(catId)
+    .then((cat) => {
+      const catHtml = `
         <h1>Name This Cat!</h1>
         <img class="image--catPage catPic" src='/cat-pic/${catId}' alt="catPicture">
         <div class="cat-description">${cat.description}</div>
@@ -18,38 +19,34 @@ function get(request, response) {
            <button type="submit">Submit</button>
         </form>
         <a href="/">Back to Homepage</a>
+        <section>
 
+        <section>
         `;
 
-        const htmlToSend = html.getReusableHTML(catHtml);       
-        response.send(htmlToSend);
-
-    }).catch((error) => {
-        console.error(error);
+      const htmlToSend = html.getReusableHTML(catHtml);
+      response.send(htmlToSend);
     })
+    .catch((error) => {
+      console.error(error);
+    });
 }
 
-// this post function does not work
-// get name from cat_names table via cat_id from cat table, get user_id from session data
-function post(request, response) {
-    const { name } = request.body;
 
-    const sid = request.signedCookies.sid;
-    model
-      .getSession(sid)
-      .then((session) => model.getCatNameData(id))
-      .then((result) => {
-        model.createCatName(name);
-      })
-      .then(() => {
-        response.redirect('/');
-      })
+function post(request, response) {
+    const name  = request.body.cat_name;
+    const catId = request.params
+
+    return model.createCatName(name, catId)
+        .then(() => {
+        response.redirect('/cats/:catid');
+    })
       .catch((error) => {
         console.error('error', error);
         response.send(
-          `<h1>Unable to create cat post! :(</h1><a href="/">Back to Homepage</a>`
+            `<h1>Unable to post cat name! :(</h1><a href="/">Back to Homepage</a>`
         );
-      });
-}
+    });
+  }
 
-module.exports = {get, post};
+module.exports = { get, post };
