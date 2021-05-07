@@ -1,6 +1,6 @@
 # week7-jess - server-side app
 
-- Joe: Facilitator
+- Jo: Facilitator
 - Evgeny: User
 - Safia: Deployment
 - Saki: Quality
