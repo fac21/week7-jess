@@ -29,16 +29,9 @@ ul {
 
 .catPic {
   border-radius: 50%;
-  height: 100%;
+  width: 100%;
+  aspect-ratio: 1/1;
   object-fit: cover;
-}
-
-.image--catPage {
-  width: 400px;
-}
-
-.image--homepage {
-  width: 250px;
 }
 
 .stack-sm > * + * {
