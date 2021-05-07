@@ -4,7 +4,7 @@ const model = require('../../database/model');
 const MAX_SIZE = 1000 * 1000 * 5; // 5 megabytes
 const ALLOWED_TYPES = ['image/jpeg', 'image/png'];
 
-function get(request, response) {
+function get(_request, response) {
   const addCatHtml = `
     <h1>Add your cat's details below</h1>
      <form class="stack-sm" action="/add-cat" method="POST" enctype="multipart/form-data">

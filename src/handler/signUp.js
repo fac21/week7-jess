@@ -1,7 +1,7 @@
 const auth = require('../../auth');
 const html = require('../components/html');
 
-function get(request, response) {
+function get(_request, response) {
   let mainContent = `
   <h1>Sign up</h1>
   <form action='/sign-up' method='POST'>

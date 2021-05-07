@@ -21,33 +21,33 @@ function createSession(sid, data) {
 }
 
 function getSession(sid) {
-    const SELECT_SESSION = "SELECT data FROM sessions WHERE sid=$1";
-    return db.query(SELECT_SESSION, [sid]).then((result) => {
-        const singleResult = result.rows[0];
-        return singleResult && singleResult.data;
-    });
+  const SELECT_SESSION = "SELECT data FROM sessions WHERE sid=$1";
+  return db.query(SELECT_SESSION, [sid]).then((result) => {
+      const singleResult = result.rows[0];
+      return singleResult && singleResult.data;
+  });
 }
 
 function getUser(email) {
-    const selectUser = `
-    SELECT * FROM users WHERE email=$1;`;
-    return db.query(selectUser, [email]).then((result) => {
-        return result.rows[0];
-    });
+  const selectUser = `
+  SELECT * FROM users WHERE email=$1;`;
+  return db.query(selectUser, [email]).then((result) => {
+      return result.rows[0];
+  });
 }
 
 function getCat(id) {
-    const selectCat = `
-    SELECT * FROM cats WHERE id=$1;`;
-    return db.query(selectCat, [id]).then((result) => {
-        return result.rows[0];
-    });
+  const selectCat = `
+  SELECT * FROM cats WHERE id=$1;`;
+  return db.query(selectCat, [id]).then((result) => {
+      return result.rows[0];
+  });
 }
 
 function createCatName(name) {
-const INSERT_NAME = `INSERT INTO cat_names (name, created_at) VALUES ($1, (SELECT CURRENT_TIMESTAMP))
-  RETURNING name, created_at`;
-  return db.query(INSERT_NAME, [name]);
+  const INSERT_NAME = `INSERT INTO cat_names (name, created_at) VALUES ($1, (SELECT CURRENT_TIMESTAMP))
+    RETURNING name, created_at`;
+    return db.query(INSERT_NAME, [name]);
 }
 
 function getCatNameData(id) {
@@ -61,7 +61,7 @@ function getCatNameData(id) {
 
 function createCat(picture, description, user_id) {
     const INSERT_CAT = `
-  INSERT INTO cats (picture, description, user_id, created_at) VALUES ($1, $2, $3, (SELECT CURRENT_TIMESTAMP))`;
+    INSERT INTO cats (picture, description, user_id, created_at) VALUES ($1, $2, $3, (SELECT CURRENT_TIMESTAMP))`;
     return db.query(INSERT_CAT, [picture, description, user_id]);
 }
 
@@ -73,15 +73,15 @@ function createCat(picture, description, user_id) {
  }
 
 function deleteSession(sid) {
-    const DELETE_SESSION = "DELETE FROM sessions WHERE sid=$1";
-    return db.query(DELETE_SESSION, [sid]);
+  const DELETE_SESSION = "DELETE FROM sessions WHERE sid=$1";
+  return db.query(DELETE_SESSION, [sid]);
 }
 
 module.exports = {
   getCat,
   getCatData,
   createCatName,
-getCatNameData,
+  getCatNameData,
   getUser,
   getSession,
   deleteSession,

@@ -1,7 +1,7 @@
 const auth = require("../../auth");
 const templates = require("../components/html");
 
-function get(request, response) {
+function get(_request, response) {
     const loginForm = `
     <h1>Log in</h1>
     <form action="log-in" method="POST">

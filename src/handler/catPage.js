@@ -5,7 +5,7 @@ const model = require("../../database/model");
 function get(request, response) {
     const catId = request.params.catid;
 
-    const cat = model.getCat(catId).then((cat) => {
+    model.getCat(catId).then((cat) => {
 
         const catHtml = `
         <h1>Name This Cat!</h1>
