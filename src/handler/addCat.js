@@ -32,9 +32,6 @@ function post(request, response) {
       .send('<h1>File upload error</h1><p>Picture must be < 5MB</p>');
   } else {
     const { description } = request.body;
-
-    console.log(request.body);
-
     // see user log in - create cat
     // @TODO- add middleware.checkAuth --> LATER
     const sid = request.signedCookies.sid;

@@ -47,7 +47,6 @@ function getCat(id) {
 function createCatName(name) {
 const INSERT_NAME = `INSERT INTO cat_names (name, created_at) VALUES ($1, (SELECT CURRENT_TIMESTAMP))
   RETURNING name, created_at`;
-  console.log(name)
   return db.query(INSERT_NAME, [name]);
 }
 

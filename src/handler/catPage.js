@@ -39,8 +39,6 @@ function post(request, response) {
       .getSession(sid)
       .then((session) => model.getCatNameData(id))
       .then((result) => {
-          console.log(result);
-
         model.createCatName(name);
       })
       .then(() => {
