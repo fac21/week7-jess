@@ -2,9 +2,10 @@ const html = require('../components/html');
 const model = require('../../database/model');
 
 function get(request, response) {
-  const catId = request.params.catid;
 
-  const cat = model
+    const catId = request.params.catid
+
+model
     .getCat(catId)
     .then((cat) => {
       const catHtml = `
@@ -46,7 +47,6 @@ function post(request, response) {
             `<h1>Unable to post cat name! :(</h1><a href="/">Back to Homepage</a>`
         );
     });
-
   }
 
 module.exports = { get, post };
