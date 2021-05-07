@@ -24,12 +24,16 @@ function post(request, response) {
   if (!ALLOWED_TYPES.includes(file.mimetype)) {
     response
       .status(400)
-      .send('<h1>File upload error</h1><p>Please upload an image file</p>');
+      .send(
+        '<h1>File upload error</h1><p>Please upload an image file</p><a href="/add-cat">Try uploading again</a>'
+      );
   }
   if (file.size > MAX_SIZE) {
     response
       .status(400)
-      .send('<h1>File upload error</h1><p>Picture must be < 5MB</p>');
+      .send(
+        '<h1>File upload error</h1><p>Picture must be < 5MB</p><a href="/add-cat">Try uploading again</a>'
+      );
   } else {
     const { description } = request.body;
 
