@@ -1,9 +1,11 @@
 # week7-jess - server-side app
 
-- Jo: Facilitator
-- Evgeny: User
-- Safia: Deployment
-- Saki: Quality
+- [Jo](https://www.github.com/jamdelion): Facilitator
+- [Evgeny](https://www.github.com/epletnev): User
+- [Safia](https://www.github.com/fi-ya): Deployment
+- [Saki](https://www.github.com/haginom): Quality
+
+![](https://user-images.githubusercontent.com/69358550/117335181-c516dc00-ae92-11eb-832d-180004b43473.png)
 
 ## Technical criteria 
 - Express server
@@ -33,9 +35,6 @@ Website name: "Name My Kitty"
 
 ![](https://i.imgur.com/wj1mFeL.png)
 ![](https://i.imgur.com/h844XX6.png)
-
-##  Final - home page
-![](https://user-images.githubusercontent.com/69358550/117335181-c516dc00-ae92-11eb-832d-180004b43473.png)
 
 ##  Final - sign up page
 ![](https://user-images.githubusercontent.com/69358550/117335312-ed9ed600-ae92-11eb-81c6-c084c9e65594.png)
